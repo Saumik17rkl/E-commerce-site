@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Cara</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <style>
+        #page-header.search-header {
+            background: #088178;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        #product1 {
+            padding: 40px 80px;
+        }
+
+        .pro-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .pro {
+            width: 23%;
+            min-width: 250px;
+            border: 1px solid #cce7d0;
+            border-radius: 25px;
+            padding: 10px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .pro img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .des {
+            text-align: left;
+            padding: 10px 0;
+        }
+
+        .cart {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: #e8f6ea;
+            padding: 10px;
+            border-radius: 50%;
+            color: #088178;
+            cursor: pointer;
+        }
+
+        .no-results {
+            text-align: center;
+            font-size: 18px;
+            color: #555;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<section id="page-header" class="search-header">
+    <h2>#search_results</h2>
+    <p>View your search results</p>
+</section>
+
+<section id="product1">
+    <div id="search-results" class="pro-container"></div>
+</section>
+
+<script src="script.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q');
+    const resultsContainer = document.getElementById('search-results');
+
+    if (!query) {
+        resultsContainer.innerHTML = '<p class="no-results">No search query provided.</p>';
+        return;
+    }
+
+    // MASTER PRODUCT LIST (same structure as shop)
+    const products = [
+        { id: 'f1', name: 'Cartoon Astronaut T-Shirt', price: 78, image: 'images/products/f1.jpg' },
+        { id: 'f2', name: 'Flower Striped Shirt', price: 65, image: 'images/products/f2.jpg' },
+        { id: 'f3', name: 'Classic Cotton T-Shirt', price: 55, image: 'images/products/f3.jpg' },
+        { id: 'n1', name: 'New Arrival Jacket', price: 120, image: 'images/products/n1.jpg' }
+    ];
+
+    const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    if (!filtered.length) {
+        resultsContainer.innerHTML =
+            `<p class="no-results">No products found for "<strong>${query}</strong>"</p>`;
+        return;
+    }
+
+    resultsContainer.innerHTML = filtered.map(p => `
+        <div class="pro">
+            <img src="${p.image}" alt="${p.name}">
+            <div class="des">
+                <span>Cara</span>
+                <h5>${p.name}</h5>
+                <h4>$${p.price}</h4>
+            </div>
+            <i class="fas fa-shopping-cart cart"
+               onclick="addToCart('${p.id}', '${p.name}', ${p.price}, '${p.image}')">
+            </i>
+        </div>
+    `).join('');
+});
+</script>
+
+</body>
+</html>

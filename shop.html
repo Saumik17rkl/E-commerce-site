@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Page 1</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* ===== HEADER (SMALLER) ===== */
+        #header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 50px;               /* ⬅ reduced */
+            background: #E3E6F3;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #header .logo {
+            width: 110px;                     /* ⬅ sensible size */
+            height: auto;
+        }
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #navbar li {
+            list-style: none;
+        }
+
+        #navbar li a {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-size: 14px;                  /* ⬅ smaller text */
+            font-weight: 600;
+            color: #1a1a1a;
+            transition: 0.3s ease;
+        }
+
+        #navbar li a i {
+            font-size: 14px;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: #088178;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        #page-header.shop-header {
+            background-image: url("images/banner/b1.jpg");
+            height: 40vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        /* ===== PRODUCT SECTION ===== */
+        #product1 {
+            padding: 40px 80px;
+            text-align: center;
+        }
+
+        .pro-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .pro {
+            width: 23%;
+            min-width: 250px;
+            padding: 10px 12px;
+            border: 1px solid #cce7d0;
+            border-radius: 25px;
+            box-shadow: 20px 20px 30px rgba(0,0,0,0.02);
+            margin: 15px 0;
+            transition: 0.3s ease;
+        }
+
+        .pro:hover {
+            box-shadow: 20px 20px 30px rgba(0,0,0,0.08);
+        }
+
+        .pro img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        /* ===== PAGINATION ===== */
+        #pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        #pagination a {
+            text-decoration: none;
+            background-color: #088178;
+            padding: 12px 18px;              /* ⬅ slightly smaller */
+            border-radius: 4px;
+            color: #fff;
+            font-weight: 600;
+            margin: 0 5px;
+        }
+
+        #pagination a.active {
+            background-color: #065f58;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 799px) {
+            #header {
+                padding: 10px 25px;
+            }
+
+            #product1 {
+                padding: 40px;
+            }
+
+            .pro {
+                width: 45%;
+            }
+        }
+
+        @media (max-width: 477px) {
+            #navbar {
+                gap: 12px;
+            }
+
+            .pro {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<section id="header">
+    <a href="index.html">
+        <img src="images/logo.png" class="logo" alt="Logo">
+    </a>
+
+    <ul id="navbar">
+        <li><a class="active" href="index.html"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="shop.html"><i class="fas fa-shopping-cart"></i>Shop</a></li>
+        <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+        <li><a href="about.html"><i class="fas fa-user"></i>About</a></li>
+        <li><a href="contact.html"><i class="fas fa-phone"></i>Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-cart-plus"></i>Cart</a></li>
+    </ul>
+</section>
+
+<!-- PAGE HEADER -->
+<section id="page-header" class="shop-header">
+    <h2>#Shop</h2>
+    <p>Page 1 — Featured Products</p>
+</section>
+
+<!-- PRODUCTS -->
+<section id="product1">
+    <div class="pro-container">
+        <div class="pro"><img src="images/products/f1.jpg"></div>
+        <div class="pro"><img src="images/products/f2.jpg"></div>
+        <div class="pro"><img src="images/products/f3.jpg"></div>
+        <div class="pro"><img src="images/products/f4.jpg"></div>
+        <div class="pro"><img src="images/products/f5.jpg"></div>
+        <div class="pro"><img src="images/products/f6.jpg"></div>
+        <div class="pro"><img src="images/products/f7.jpg"></div>
+        <div class="pro"><img src="images/products/f8.jpg"></div>
+    </div>
+
+    <!-- PAGINATION -->
+    <div id="pagination">
+        <a class="active" href="shop.html">1</a>
+        <a href="shop2.html">2</a>
+        <a href="shop2.html"><i class="fas fa-long-arrow-alt-right"></i></a>
+    </div>
+</section>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>

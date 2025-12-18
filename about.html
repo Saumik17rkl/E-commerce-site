@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Cara</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <style>
+        /* About Page Specific Styles */
+        #page-header.about-header {
+            background-image: url("images/about/banner.png");
+            background-size: cover;
+            background-position: center;
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 14px;
+        }
+
+        #about-head {
+            display: flex;
+            align-items: center;
+            padding: 80px 40px;
+        }
+
+        #about-head img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 40px;
+        }
+
+        #about-head div {
+            padding-left: 40px;
+        }
+
+        #about-head h2 {
+            font-size: 46px;
+            line-height: 54px;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        #about-head p {
+            color: #465b52;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        #about-app {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        #about-app h1 {
+            margin-bottom: 30px;
+        }
+
+        #about-app .video {
+            width: 70%;
+            margin: 30px auto 0 auto;
+        }
+
+        #about-app .video video {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        #feature {
+            padding: 80px 40px;
+            background-color: #f5f5f5;
+        }
+
+        .feature-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+
+        .fe-box {
+            width: 180px;
+            text-align: center;
+            padding: 25px 15px;
+            box-shadow: 20px 20px 34px rgba(0, 0, 0, 0.03);
+            border: 1px solid #cce7d0;
+            border-radius: 4px;
+            margin: 15px 0;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .fe-box:hover {
+            box-shadow: 10px 10px 54px rgba(70, 62, 221, 0.1);
+        }
+
+        .fe-box img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .fe-box h6 {
+            display: inline-block;
+            padding: 9px 8px 6px 8px;
+            line-height: 1;
+            border-radius: 4px;
+            color: #088178;
+            background-color: #fddde4;
+        }
+
+        @media (max-width: 992px) {
+            #about-head {
+                flex-direction: column;
+                padding: 40px 20px;
+            }
+
+            #about-head img {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            #about-head div {
+                padding-left: 0;
+            }
+
+            #about-app .video {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #about-head h2 {
+                font-size: 36px;
+                line-height: 42px;
+            }
+
+            .feature-box {
+                justify-content: center;
+            }
+
+            .fe-box {
+                margin: 15px;
+            }
+        }
+
+        @media (max-width: 477px) {
+            #about-head {
+                padding: 20px 10px;
+            }
+
+            #about-head h2 {
+                font-size: 28px;
+                line-height: 36px;
+            }
+
+            .fe-box {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+     <section id="header">
+        <a href="#"><img src="images/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><i class="fas fa-home"></i><a class="active" href="index.html">Home</a></li>
+                <li><i class="fas fa-shopping-cart"></i><a href="shop.html">Shop</a></li>
+                <li><i class="fas fa-blog"></i><a href="blog.html">Blog</a></li>
+                <li><i class="fas fa-user"></i><a href="about.html">About</a></li>
+                <li><i class="fas fa-phone"></i><a href="contact.html">Contact</a></li>
+                <li><i class="fas fa-cart-plus"></i><a href="cart.html">Cart</a></li>
+
+                
+            
+            </ul>
+
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="page-header" class="about-header">
+        <h2>#KnowUs</h2>
+        <p>Get to know more about our brand and values</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about-head" class="section-p1">
+        <img src="images/about/a6.jpg" alt="Our Story">
+        <div>
+            <h2>Who We Are?</h2>
+            <p>Welcome to Cara, where fashion meets sustainability. Founded in 2020, we've been on a mission to provide high-quality, eco-friendly fashion that doesn't compromise on style or the planet.</p>
+            <p>Our journey began with a simple idea: to create a brand that values both people and the environment. Today, we're proud to be a leading name in sustainable fashion, with a commitment to ethical sourcing, fair labor practices, and environmental responsibility.</p>
+            <p>At Cara, we believe that looking good and doing good should go hand in hand. That's why we carefully select materials, work with responsible suppliers, and design timeless pieces that you'll love for years to come.</p>
+            <abbr title="">Create stunning images with as much or as little control as you like thanks to a choice of Basic and Creative modes.</abbr>
+            <br><br>
+            <marquee bgcolor="#ccc" loop="-1" scrollamount="5" width="100%">Sustainable Fashion for a Better Tomorrow - Shop our latest collection today and join the movement towards a more ethical and stylish future.</marquee>
+        </div>
+    </section>
+
+    <!-- App Video -->
+    <section id="about-app" class="section-p1">
+        <h1>Download Our <a href="#">App</a></h1>
+        <div class="video">
+            <video autoplay muted loop src="images/about/1.mp4"></video>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <img src="images/features/f1.png" alt="Free Shipping">
+            <h6>Free Shipping</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f2.png" alt="Online Order">
+            <h6>Online Order</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f3.png" alt="Save Money">
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f4.png" alt="Promotions">
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f5.png" alt="Happy Sell">
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <img src="images/features/f6.png" alt="24/7 Support">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="section-p1">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2>Sign Up For Newsletters</h2>
+                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+            </div>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="images/logo.png" alt="Cara Logo">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone: </strong> +01 2222 365 /(+91) 01 2345 6789</p>
+            <p><strong>Hours: </strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About Us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="images/pay/app.jpg" alt="App Store">
+                <img src="images/pay/play.jpg" alt="Google Play">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <div class="payment-methods">
+                <img src="images/pay/pay.png" alt="Payment Methods">
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2025, Tech2 etc - HTML CSS Ecommerce Template</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

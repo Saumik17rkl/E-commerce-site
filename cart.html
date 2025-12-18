@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Cara</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        #cart {
+            overflow-x: auto;
+        }
+        #cart table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            white-space: nowrap;
+        }
+        #cart table img {
+            width: 70px;
+        }
+        #cart table td:nth-child(1) { width: 100px; text-align: center; }
+        #cart table td:nth-child(2) { width: 150px; text-align: center; }
+        #cart table td:nth-child(3) { width: 250px; text-align: center; }
+        #cart table td:nth-child(4),
+        #cart table td:nth-child(5),
+        #cart table td:nth-child(6) { width: 150px; text-align: center; }
+        
+        #cart table thead {
+            border: 1px solid #e2e9e1;
+            border-left: none;
+            border-right: none;
+        }
+        #cart table thead td {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 13px;
+            padding: 18px 0;
+        }
+        #cart table tbody tr td {
+            padding-top: 15px;
+        }
+        #cart table tbody td {
+            font-size: 13px;
+        }
+        #cart-add {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        #coupon {
+            width: 50%;
+            margin-bottom: 30px;
+        }
+        #coupon h3,
+        #subtotal h3 {
+            padding-bottom: 15px;
+        }
+        #coupon input {
+            padding: 10px 20px;
+            outline: none;
+            width: 60%;
+            margin-right: 10px;
+            border: 1px solid #e2e9e1;
+        }
+        #coupon button,
+        #subtotal button {
+            background-color: #088178;
+            color: #fff;
+            padding: 12px 20px;
+        }
+        #subtotal {
+            width: 50%;
+            margin-bottom: 30px;
+            border: 1px solid #e2e9e1;
+            padding: 30px;
+        }
+        #subtotal table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        #subtotal table td {
+            width: 50%;
+            border: 1px solid #e2e9e1;
+            padding: 10px;
+            font-size: 13px;
+        }
+        @media (max-width: 799px) {
+            #cart-add {
+                flex-direction: column;
+            }
+            #coupon {
+                width: 100%;
+            }
+            #subtotal {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+     <section id="header">
+        <a href="#"><img src="images/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><i class="fas fa-home"></i><a class="active" href="index.html">Home</a></li>
+                <li><i class="fas fa-shopping-cart"></i><a href="shop.html">Shop</a></li>
+                <li><i class="fas fa-blog"></i><a href="blog.html">Blog</a></li>
+                <li><i class="fas fa-user"></i><a href="about.html">About</a></li>
+                <li><i class="fas fa-phone"></i><a href="contact.html">Contact</a></li>
+                <li><i class="fas fa-cart-plus"></i><a href="cart.html">Cart</a></li>
+
+                
+            
+            </ul>
+
+        </div>
+    </section>
+
+    
+
+    <section id="cart" class="section-p1">
+        <table>
+            <thead>
+                <tr>
+                    <td>Remove</td>
+                    <td>Image</td>
+                    <td>Product</td>
+                    <td>Price</td>
+                    <td>Quantity</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="images/products/f1.jpg" alt="Product 1"></td>
+                    <td>Cartoon Astronaut T-Shirt</td>
+                    <td>$78.00</td>
+                    <td><input type="number" value="1" min="1"></td>
+                    <td>$78.00</td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="images/products/f2.jpg" alt="Product 2"></td>
+                    <td>Flower Striped Shirt</td>
+                    <td>$65.00</td>
+                    <td><input type="number" value="1" min="1"></td>
+                    <td>$65.00</td>
+                </tr>
+                <tr>
+                    <td><a href="#"><i class="far fa-times-circle"></i></a></td>
+                    <td><img src="images/products/f3.jpg" alt="Product 3"></td>
+                    <td>Classic Cotton T-Shirt</td>
+                    <td>$55.00</td>
+                    <td><input type="number" value="1" min="1"></td>
+                    <td>$55.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="cart-add" class="section-p1">
+        <div id="coupon">
+            <h3>Apply Coupon</h3>
+            <div>
+                <input type="text" placeholder="Enter Your Coupon">
+                <button class="normal">Apply</button>
+            </div>
+        </div>
+
+        <div id="subtotal">
+            <h3>Cart Totals</h3>
+            <table>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td>$198.00</td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>$198.00</strong></td>
+                </tr>
+            </table>
+            <button class="normal" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+        </div>
+    </section>
+    <div id="cart-add" class="section-p1">
+    <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+            <input type="text" id="coupon-code" placeholder="Enter Your Coupon Code">
+            <button class="normal" onclick="applyCoupon()">Apply</button>
+        </div>
+    </div>
+
+    <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+            <tr>
+                <td>Cart Subtotal</td>
+                <td id="cart-subtotal">$0.00</td>
+            </tr>
+            <tr>
+                <td>Shipping</td>
+                <td id="shipping-cost">Free</td>
+            </tr>
+            <tr class="discount-row" style="display: none;">
+                <td>Discount</td>
+                <td id="discount-amount">-$0.00</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td id="cart-total"><strong>$0.00</strong></td>
+            </tr>
+        </table>
+        <button class="normal" onclick="window.location.href='checkout.html'">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script>
+    // Update cart totals
+    function updateCartTotals() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let subtotal = 0;
+        
+        // Calculate subtotal
+        cart.forEach(item => {
+            subtotal += item.price * item.quantity;
+        });
+        
+        // Update the DOM
+        document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('cart-total').innerHTML = `<strong>$${subtotal.toFixed(2)}</strong>`;
+    }
+    
+    // Apply coupon code (example)
+    function applyCoupon() {
+        const couponCode = document.getElementById('coupon-code').value.trim();
+        if (couponCode === 'DISCOUNT10') {
+            const subtotal = parseFloat(document.getElementById('cart-subtotal').textContent.replace('$', ''));
+            const discount = subtotal * 0.1; // 10% discount
+            const total = subtotal - discount;
+            
+            document.querySelector('.discount-row').style.display = 'table-row';
+            document.getElementById('discount-amount').textContent = `-$${discount.toFixed(2)}`;
+            document.getElementById('cart-total').innerHTML = `<strong>$${total.toFixed(2)}</strong>`;
+            
+            alert('Coupon applied successfully!');
+        } else if (couponCode) {
+            alert('Invalid coupon code. Please try again.');
+        }
+    }
+    
+    // Initialize cart totals on page load
+    document.addEventListener('DOMContentLoaded', updateCartTotals);
+</script>
+
+    <script>
+        // Update cart count
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all quantity inputs
+            const quantityInputs = document.querySelectorAll('#cart input[type="number"]');
+            
+            // Update quantity
+            quantityInputs.forEach(input => {
+                input.addEventListener('change', updateCartTotal);
+            });
+
+            // Remove item
+            document.querySelectorAll('.fa-times-circle').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.closest('tr').remove();
+                    updateCartTotal();
+                });
+            });
+        });
+
+        function updateCartTotal() {
+            let total = 0;
+            const rows = document.querySelectorAll('#cart tbody tr');
+            
+            rows.forEach(row => {
+                const price = parseFloat(row.querySelector('td:nth-child(4)').textContent.replace('$', ''));
+                const quantity = parseInt(row.querySelector('input').value);
+                const subtotal = price * quantity;
+                
+                row.querySelector('td:last-child').textContent = '$' + subtotal.toFixed(2);
+                total += subtotal;
+            });
+
+            // Update total in the subtotal section
+            document.querySelector('#subtotal td:last-child').textContent = '$' + total.toFixed(2);
+        }
+    </script>
+</body>
+</html>
