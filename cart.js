@@ -43,18 +43,32 @@ class Cart {
     }
 
     updateCartCount() {
-        if (this.cartCountElement) {
-            const totalItems = this.cart.reduce((total, item) => total + item.quantity, 0);
-            this.cartCountElement.textContent = totalItems;
-        }
+        const totalItems = this.cart.reduce((total, item) => total + item.quantity, 0);
+        // Update all cart count elements
+        const cartCountElements = document.querySelectorAll('.cart-count, #cart-count, #mobile-cart-count');
+        cartCountElements.forEach(element => {
+            if (totalItems > 0) {
+                element.textContent = totalItems;
+                element.style.display = 'flex';
+            } else {
+                element.style.display = 'none';
+            }
+        });
+        return totalItems;
     }
 
     showNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'notification';
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        setTimeout(() => notification.remove(), 3000);
+        const notification = document.getElementById('notification');
+        const notifText = document.getElementById('notif-text');
+        if (notification && notifText) {
+            notifText.textContent = message;
+            notification.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
     }
 
     renderCart() {

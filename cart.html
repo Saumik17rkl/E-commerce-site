@@ -437,23 +437,21 @@
             </div>
         </div>
 
-        <div id="cart-total" style="display: none;">
-            <h3>Cart Totals</h3>
-            <table>
-                <tr>
-                    <td>Subtotal</td>
-                    <td id="subtotal">$0.00</td>
-                </tr>
-                <tr>
-                    <td>Tax (10%)</td>
-                    <td id="tax">$0.00</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td id="total"><strong>$0.00</strong></td>
-                </tr>
-            </table>
-            <button class="checkout-btn">Proceed to Checkout</button>
+        <div class="total-section">
+            <h3>Cart Total</h3>
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="total-row">
+                <span>Shipping</span>
+                <span>Free</span>
+            </div>
+            <div class="total-row total">
+                <strong>Total</strong>
+                <strong id="total">$0.00</strong>
+            </div>
+            <a href="checkout.html" class="checkout-btn">Proceed To Checkout</a>
         </div>
     </section>
 
@@ -494,11 +492,19 @@
                     }
                 });
 
-                // Handle checkout button
-                const checkoutBtn = document.querySelector('.checkout-btn');
+                // Handle checkout button click
+                const checkoutBtn = document.getElementById('checkout-btn');
                 if (checkoutBtn) {
                     checkoutBtn.addEventListener('click', () => {
-                        alert('Proceeding to checkout...');
+                        const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+                        if (cartItems.length === 0) {
+                            alert('Your cart is empty. Please add items before checking out.');
+                            return;
+                        }
+                        // Save cart to session storage for checkout page
+                        sessionStorage.setItem('checkoutItems', JSON.stringify(cartItems));
+                        // Redirect to checkout page
+                        window.location.href = 'checkout.html';
                         // Here you would typically redirect to a checkout page
                     });
                 }
