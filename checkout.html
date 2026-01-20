@@ -1,428 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - Cara</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-    <style>
-        .checkout {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 40px 80px;
-            gap: 30px;
-        }
-        
-        .checkout-form {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .checkout-summary {
-            width: 350px;
-            padding: 30px;
-            border: 1px solid #e2e9e1;
-            border-radius: 10px;
-            align-self: flex-start;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e2e9e1;
-            border-radius: 4px;
-            font-size: 14px;
-        }
-        
-        .form-row {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .form-row .form-group {
-            flex: 1;
-        }
-        
-        .checkout-summary h3 {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e2e9e1;
-        }
-        
-        .order-summary {
-            margin-bottom: 20px;
-        }
-        
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f5f5f5;
-        }
-        
-        .order-total {
-            font-weight: 700;
-            font-size: 18px;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #e2e9e1;
-        }
-        
-        .btn-checkout {
-            width: 100%;
-            padding: 15px;
-            background: #088178;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        .btn-checkout:hover {
-            background: #066b63;
-        }
-        
-        .payment-methods {
-            margin-top: 20px;
-        }
-        
-        .payment-method {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #e2e9e1;
-            border-radius: 4px;
-        }
-        
-        .payment-method input {
-            margin-right: 10px;
-        }
-        
-        @media (max-width: 799px) {
-            .checkout {
-                margin: 20px;
-            }
-            
-            .checkout-summary {
-                width: 100%;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | BIZTAP Shopping Mart</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f6f6;
+    margin: 0;
+}
+
+#header {
+    background: #088178;
+    padding: 15px 60px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.checkout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px 60px;
+}
+
+.checkout-form, .checkout-summary {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.checkout-form {
+    flex: 2;
+}
+
+.checkout-summary {
+    flex: 1;
+    border: 1px solid #ddd;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-checkout {
+    width: 100%;
+    padding: 14px;
+    background: #088178;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-checkout:disabled {
+    background: #999;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-total {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
 </head>
+
 <body>
-    <!-- Header Section -->
-    <header id="header">
-         <section id="header">
-        <a href="#"><img src="images/logo.png" alt=""></a>
-        
-            <ul id="navbar">
-                <li><i class="fas fa-home"></i><a class="active" href="index.html">Home</a></li>
-                <li><i class="fas fa-shopping-cart"></i><a href="shop.html">Shop</a></li>
-                <li><i class="fas fa-blog"></i><a href="blog.html">Blog</a></li>
-                <li><i class="fas fa-user"></i><a href="about.html">About</a></li>
-                <li><i class="fas fa-phone"></i><a href="contact.html">Contact</a></li>
-                <li><i class="fas fa-cart-plus"></i><a href="cart.html">Cart</a></li>
 
-                
-            
-            </ul>
+<header id="header">
+    <a href="index.html">BIZTAP Shopping Mart</a>
+    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+</header>
 
-        
-    </section>
-        
-        <div class="search-box">
-            <input type="text" id="search-input" placeholder="Search for products...">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
+<div class="checkout">
+
+<form id="checkout-form" class="checkout-form">
+    <h3>Billing Details</h3>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>First Name *</label>
+            <input id="first-name" required>
         </div>
-        
-        
-           
-        
-        
-        <div id="mobile">
-            <a href="cart.html"><i class="fas fa-shopping-cart"></i> <span id="mobile-cart-count">0</span></a>
-            <i class="fas fa-bars mobile-menu" id="mobile-menu-toggle"></i>
-        </div>
-    </header>
-
-    
-
-    <div class="checkout">
-        <form id="checkout-form" class="checkout-form">
-            <h3>Billing Details</h3>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="first-name">First Name *</label>
-                    <input type="text" id="first-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="last-name">Last Name *</label>
-                    <input type="text" id="last-name" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="company">Company Name (Optional)</label>
-                <input type="text" id="company">
-            </div>
-            
-            <div class="form-group">
-                <label for="country">Country / Region *</label>
-                <select id="country" required>
-                    <option value="">Select a country / region</option>
-                    <option value="US">United States</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="CA">Canada</option>
-                    <option value="AU">Australia</option>
-                    <option value="IN">India</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="street">Street Address *</label>
-                <input type="text" id="street" placeholder="House number and street name" required>
-                <input type="text" id="apartment" placeholder="Apartment, suite, unit, etc. (optional)" style="margin-top: 10px;">
-            </div>
-            
-            <div class="form-group">
-                <label for="city">Town / City *</label>
-                <input type="text" id="city" required>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="state">State *</label>
-                    <input type="text" id="state" required>
-                </div>
-                <div class="form-group">
-                    <label for="zip">ZIP Code *</label>
-                    <input type="text" id="zip" required>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="phone">Phone *</label>
-                    <input type="tel" id="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" required>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="order-notes">Order Notes (Optional)</label>
-                <textarea id="order-notes" rows="4" placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
-            </div>
-        </form>
-        
-        <div class="checkout-summary">
-            <h3>Your Order</h3>
-            <div class="order-summary" id="order-summary">
-                <!-- Order items will be populated by JavaScript -->
-            </div>
-            <div class="order-total" id="order-total">
-                <!-- Order total will be populated by JavaScript -->
-            </div>
-            
-            <div class="payment-methods">
-                <h4>Payment</h4>
-                <p>All transactions are secure and encrypted.</p>
-                
-                <div class="payment-method">
-                    <input type="radio" id="cod" name="payment" value="cod" checked>
-                    <label for="cod">Cash on Delivery</label>
-                </div>
-                
-                <div class="payment-method">
-                    <input type="radio" id="credit-card" name="payment" value="credit-card">
-                    <label for="credit-card">Credit/Debit Card</label>
-                </div>
-                
-                <div class="payment-method">
-                    <input type="radio" id="paypal" name="payment" value="paypal">
-                    <label for="paypal">PayPal</label>
-                </div>
-            </div>
-            
-            <button type="submit" form="checkout-form" class="btn-checkout">Place Order</button>
+        <div class="form-group">
+            <label>Last Name *</label>
+            <input id="last-name" required>
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load cart items from session storage (passed from cart page)
-            let cart = [];
-            try {
-                const cartData = sessionStorage.getItem('checkoutItems');
-                cart = cartData ? JSON.parse(cartData) : [];
-                
-                // If no items in session storage, try to load from localStorage as fallback
-                if (cart.length === 0) {
-                    const localCart = JSON.parse(localStorage.getItem('cart')) || [];
-                    if (localCart.length > 0) {
-                        cart = localCart;
-                        sessionStorage.setItem('checkoutItems', JSON.stringify(cart));
-                    }
-                }
-            } catch (e) {
-                console.error('Error loading cart:', e);
-                cart = [];
-            }
-            
-            const orderSummary = document.getElementById('order-summary');
-            const orderTotal = document.getElementById('order-total');
-            
-            // If cart is empty, redirect to cart page
-            if (cart.length === 0) {
-                window.location.href = 'cart.html';
-                return;
-            }
-            
-            // Calculate and display order summary
-            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            const tax = subtotal * 0.1; // 10% tax
-            const shipping = subtotal > 0 ? 0 : 0; // Free shipping for now
-            const total = subtotal + tax + shipping;
+    <div class="form-group">
+        <label>Email *</label>
+        <input type="email" id="email" required>
+    </div>
 
-            // Add order items to summary
-            if (orderSummary) {
-                orderSummary.innerHTML = `
-                    <div class="order-items">
-                        ${cart.map(item => `
-                            <div class="order-item">
-                                <div class="item-details">
-                                    <span class="item-name">${item.name}</span>
-                                    <span class="item-quantity">x${item.quantity}</span>
-                                </div>
-                                <span class="item-price">$${(item.price * item.quantity).toFixed(2)}</span>
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div class="order-summary-totals">
-                        <div class="summary-row">
-                            <span>Subtotal</span>
-                            <span>$${subtotal.toFixed(2)}</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Shipping</span>
-                            <span>${shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
-                        </div>
-                        <div class="summary-row">
-                            <span>Tax (10%)</span>
-                            <span>$${tax.toFixed(2)}</span>
-                        </div>
-                        <div class="summary-row total">
-                            <strong>Total</strong>
-                            <strong>$${total.toFixed(2)}</strong>
-                        </div>
-                    </div>
-                `;
-            }
-            
-            // Handle form submission
-            const checkoutForm = document.getElementById('checkout-form');
-            if (checkoutForm) {
-                checkoutForm.addEventListener('submit', async function(e) {
-                    e.preventDefault();
-                    
-                    // Show loading state
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalBtnText = submitBtn.innerHTML;
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = 'Placing Order...';
-                    
-                    try {
-                        // Prepare order data
-                        const orderData = {
-                            customer: {
-                                firstName: document.getElementById('first-name').value.trim(),
-                                lastName: document.getElementById('last-name').value.trim(),
-                                company: document.getElementById('company').value.trim(),
-                                email: document.getElementById('email').value.trim(),
-                                phone: document.getElementById('phone').value.trim(),
-                                address: {
-                                    street: document.getElementById('street').value.trim(),
-                                    apartment: document.getElementById('apartment').value.trim(),
-                                    city: document.getElementById('city').value.trim(),
-                                    state: document.getElementById('state').value.trim(),
-                                    zipCode: document.getElementById('zip').value.trim(),
-                                    country: document.getElementById('country').value.trim()
-                                }
-                            },
-                            order: {
-                                items: cart.map(item => ({
-                                    productId: item.id,
-                                    name: item.name,
-                                    price: item.price,
-                                    quantity: item.quantity
-                                })),
-                                subtotal: subtotal,
-                                tax: tax,
-                                shipping: shipping,
-                                total: total,
-                                notes: document.getElementById('order-notes').value.trim(),
-                                paymentMethod: document.querySelector('input[name="payment"]:checked').value
-                            }
-                        };
-                        
-                        // Send order to backend
-                        const response = await fetch('https://order-to-delivery.onrender.com/orders', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify(orderData)
-                        });
-                        
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
-                        }
-                        
-                        const result = await response.json();
-                        
-                        // Clear the cart on successful order
-                        localStorage.removeItem('cart');
-                        sessionStorage.removeItem('checkoutItems');
-                        
-                        // Update cart count if the function exists
-                        if (typeof updateCartCount === 'function') {
-                            updateCartCount();
-                        }
-                        
-                        // Redirect to thank you page with order ID
-                        window.location.href = `thank-you.html?orderId=${result.orderId || ''}`;
-                        
-                    } catch (error) {
-                        console.error('Error placing order:', error);
-                        alert('There was an error processing your order. Please try again.');
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnText;
-                    }
-                });
-            }
+    <div class="form-group">
+        <label>Phone *</label>
+        <input id="phone" required>
+    </div>
+
+    <div class="form-group">
+        <label>Address *</label>
+        <input id="street" required>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label>City *</label>
+            <input id="city" required>
+        </div>
+        <div class="form-group">
+            <label>ZIP *</label>
+            <input id="zip" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Order Notes</label>
+        <textarea id="notes"></textarea>
+    </div>
+</form>
+
+<div class="checkout-summary">
+    <h3>Your Order</h3>
+    <div id="order-summary"></div>
+    <div class="order-total" id="order-total"></div>
+    <button class="btn-checkout" id="place-order">Place Order</button>
+</div>
+
+</div>
+
+<script>
+function generateOrderId() {
+    return "BIZTAP-ORD-" + Date.now();
+}
+
+function getCart() {
+    return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+function saveOrder(order) {
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+}
+
+async function syncWithBackend(order) {
+    try {
+        const res = await fetch("http://127.0.0.1:8000/orders/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(order)
         });
-    </script>
+        return res.ok;
+    } catch {
+        return false;
+    }
+}
+
+/* ---------- INIT ---------- */
+const cart = getCart();
+if (!cart.length) location.href = "cart.html";
+
+const summary = document.getElementById("order-summary");
+const totalBox = document.getElementById("order-total");
+
+let subtotal = 0;
+summary.innerHTML = "";
+
+cart.forEach(item => {
+    subtotal += item.price * item.quantity;
+    summary.innerHTML += `
+        <div class="order-item">
+            <span>${item.name} × ${item.quantity}</span>
+            <span>$${(item.price * item.quantity).toFixed(2)}</span>
+        </div>`;
+});
+
+totalBox.textContent = "Total: $" + subtotal.toFixed(2);
+
+/* ---------- PLACE ORDER ---------- */
+document.getElementById("place-order").addEventListener("click", async () => {
+    const btn = document.getElementById("place-order");
+
+    // Basic validation
+    const firstName = document.getElementById("first-name").value.trim();
+    const lastName  = document.getElementById("last-name").value.trim();
+    const email     = document.getElementById("email").value.trim();
+    const phone     = document.getElementById("phone").value.trim();
+    const street    = document.getElementById("street").value.trim();
+    const city      = document.getElementById("city").value.trim();
+    const zip       = document.getElementById("zip").value.trim();
+
+    if (!firstName || !lastName || !email || !phone || !street || !city || !zip) {
+        alert("Please fill all required fields.");
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = "Placing Order...";
+
+    const order = {
+        id: generateOrderId(),
+        createdAt: new Date().toISOString(),
+        status: "PENDING_SYNC",
+        customer: {
+            firstName,
+            lastName,
+            email,
+            phone,
+            address: { street, city, zip }
+        },
+        items: cart,
+        total: subtotal
+    };
+
+    // Try backend
+    const synced = await syncWithBackend(order);
+    order.status = synced ? "SYNCED" : "PENDING_SYNC";
+
+    // Save ONCE
+    saveOrder(order);
+
+    // Clear cart
+    localStorage.removeItem("cart");
+
+    // Redirect
+    window.location.href = synced
+        ? `thank-you.html?order=${order.id}`
+        : `thank-you.html?offline=true&order=${order.id}`;
+});
+</script>
+
 </body>
 </html>

@@ -1,136 +1,138 @@
-// cart.js - Cart Management System
+// cart.js — SINGLE SOURCE OF TRUTH
+
 class Cart {
     constructor() {
-        this.cart = JSON.parse(localStorage.getItem('cart')) || [];
-        this.cartCountElement = document.getElementById('cart-count');
+        this.cart = JSON.parse(localStorage.getItem("cart")) || [];
+        this.notification = document.getElementById("notification");
         this.updateCartCount();
     }
+
+    /* ---------- CORE ACTIONS ---------- */
 
     addItem(product) {
-        const existingItem = this.cart.find(item => item.id === product.id);
-        if (existingItem) {
-            existingItem.quantity += 1;
+        const item = this.cart.find(p => p.id === product.id);
+        if (item) {
+            item.quantity += 1;
         } else {
-            this.cart.push({...product, quantity: 1});
+            this.cart.push({ ...product, quantity: 1 });
         }
-        this.saveCart();
-        this.updateCartCount();
-        this.showNotification(`${product.name} added to cart!`);
+        this.persist("Item added to cart");
     }
 
-    removeItem(productId) {
-        this.cart = this.cart.filter(item => item.id !== productId);
-        this.saveCart();
+    removeItem(id) {
+        this.cart = this.cart.filter(item => item.id !== id);
+        this.persist("Item removed");
+    }
+
+    updateQuantity(id, qty) {
+        const item = this.cart.find(i => i.id === id);
+        if (!item) return;
+
+        item.quantity = Math.max(1, parseInt(qty) || 1);
+        this.persist("Quantity updated");
+    }
+
+    /* ---------- STORAGE ---------- */
+
+    persist(message) {
+        localStorage.setItem("cart", JSON.stringify(this.cart));
         this.updateCartCount();
         this.renderCart();
+        this.notify(message);
     }
 
-    updateQuantity(productId, newQuantity) {
-        const item = this.cart.find(item => item.id === productId);
-        if (item) {
-            item.quantity = parseInt(newQuantity) || 1;
-            if (item.quantity <= 0) {
-                this.removeItem(productId);
-                return;
-            }
-            this.saveCart();
-            this.renderCart();
-        }
-    }
-
-    saveCart() {
-        localStorage.setItem('cart', JSON.stringify(this.cart));
-    }
+    /* ---------- UI UPDATES ---------- */
 
     updateCartCount() {
-        const totalItems = this.cart.reduce((total, item) => total + item.quantity, 0);
-        // Update all cart count elements
-        const cartCountElements = document.querySelectorAll('.cart-count, #cart-count, #mobile-cart-count');
-        cartCountElements.forEach(element => {
-            if (totalItems > 0) {
-                element.textContent = totalItems;
-                element.style.display = 'flex';
-            } else {
-                element.style.display = 'none';
-            }
-        });
-        return totalItems;
+        const count = this.cart.reduce((sum, i) => sum + i.quantity, 0);
+        document.querySelectorAll(".cart-count, #cart-count, #mobile-cart-count")
+            .forEach(el => {
+                if (!el) return;
+                el.textContent = count;
+                el.style.display = count ? "flex" : "none";
+            });
     }
 
-    showNotification(message) {
-        const notification = document.getElementById('notification');
-        const notifText = document.getElementById('notif-text');
-        if (notification && notifText) {
-            notifText.textContent = message;
-            notification.classList.add('show');
-            
-            // Hide after 3 seconds
-            setTimeout(() => {
-                notification.classList.remove('show');
-            }, 3000);
-        }
+    notify(text) {
+        if (!this.notification) return;
+        this.notification.textContent = text;
+        this.notification.style.display = "block";
+        setTimeout(() => this.notification.style.display = "none", 2000);
     }
+
+    /* ---------- CART PAGE ONLY ---------- */
 
     renderCart() {
-        const cartContainer = document.getElementById('cart-items');
-        if (!cartContainer) return;
+        const table = document.getElementById("cart-items");
+        const subtotalEl = document.getElementById("subtotal");
+        const taxEl = document.getElementById("tax");
+        const totalEl = document.getElementById("total");
+
+        if (!table || !subtotalEl || !taxEl || !totalEl) return;
 
         if (this.cart.length === 0) {
-            cartContainer.innerHTML = '<p>Your cart is empty</p>';
+            table.innerHTML = `<tr><td colspan="6">Your cart is empty</td></tr>`;
+            subtotalEl.textContent = "$0.00";
+            taxEl.textContent = "$0.00";
+            totalEl.textContent = "$0.00";
             return;
         }
 
-        cartContainer.innerHTML = this.cart.map(item => `
-            <tr>
-                <td><img src="${item.image}" alt="${item.name}"></td>
-                <td>${item.name}</td>
-                <td>$${item.price.toFixed(2)}</td>
-                <td>
-                    <input type="number" value="${item.quantity}" 
-                           min="1" 
-                           onchange="cart.updateQuantity(${item.id}, this.value)">
-                </td>
-                <td>$${(item.price * item.quantity).toFixed(2)}</td>
-                <td><i class="fas fa-trash" onclick="cart.removeItem(${item.id})"></i></td>
-            </tr>
-        `).join('');
+        let subtotal = 0;
 
-        this.updateTotal();
+        table.innerHTML = this.cart.map(item => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+
+            return `
+                <tr>
+                    <td><img src="${item.image}" width="60"></td>
+                    <td>${item.name}</td>
+                    <td>$${item.price.toFixed(2)}</td>
+                    <td>
+                        <input type="number" min="1" value="${item.quantity}"
+                               data-id="${item.id}" class="qty-input">
+                    </td>
+                    <td>$${itemTotal.toFixed(2)}</td>
+                    <td>
+                        <button class="remove-btn" data-id="${item.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join("");
+
+        const tax = subtotal * 0.1;
+
+        subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        taxEl.textContent = `$${tax.toFixed(2)}`;
+        totalEl.textContent = `$${(subtotal + tax).toFixed(2)}`;
+
+        this.bindCartEvents();
     }
 
-    updateTotal() {
-        const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        const tax = subtotal * 0.1; // 10% tax
-        const total = subtotal + tax;
+    bindCartEvents() {
+        document.querySelectorAll(".qty-input").forEach(input => {
+            input.addEventListener("change", e => {
+                this.updateQuantity(
+                    e.target.dataset.id,
+                    e.target.value
+                );
+            });
+        });
 
-        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-        document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        document.querySelectorAll(".remove-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                this.removeItem(btn.dataset.id);
+            });
+        });
     }
 }
 
-// Initialize cart
-const cart = new Cart();
+/* ---------- INIT ---------- */
 
-// Initialize cart on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Add click handlers to all "Add to Cart" buttons
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-        button.addEventListener('click', (e) => {
-            const productElement = e.target.closest('.product');
-            const product = {
-                id: parseInt(productElement.dataset.id),
-                name: productElement.dataset.name,
-                price: parseFloat(productElement.dataset.price),
-                image: productElement.dataset.image
-            };
-            cart.addItem(product);
-            e.preventDefault();
-        });
-    });
-
-    // Initialize cart page if we're on the cart page
-    if (document.getElementById('cart-items')) {
-        cart.renderCart();
-    }
+document.addEventListener("DOMContentLoaded", () => {
+    window.cart = new Cart();
+    cart.renderCart();
 });

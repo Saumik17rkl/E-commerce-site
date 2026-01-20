@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Cara</title>
+    <title>Contact Us - BIZTAP Shopping Mart</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <script src="script.js"></script>
+
     <style>
         /* Contact Page Specific Styles */
         #page-header.contact-header {
@@ -30,43 +32,6 @@
             padding: 80px 50px;
         }
 
-        #contact-details .details {
-            width: 40%;
-        }
-
-        #contact-details .details span,
-        #form-details form span {
-            font-size: 12px;
-        }
-
-        #contact-details .details h2,
-        #form-details form h2 {
-            font-size: 26px;
-            line-height: 35px;
-            padding: 20px 0;
-        }
-
-        #contact-details .details h3 {
-            font-size: 16px;
-            padding-bottom: 15px;
-        }
-
-        #contact-details .details li {
-            list-style: none;
-            display: flex;
-            padding: 10px 0;
-        }
-
-        #contact-details .details li i {
-            font-size: 14px;
-            padding-right: 22px;
-        }
-
-        #contact-details .details li p {
-            margin: 0;
-            font-size: 14px;
-        }
-
         #contact-details .map {
             width: 55%;
             height: 400px;
@@ -81,226 +46,166 @@
         #form-details {
             display: flex;
             justify-content: space-between;
-            margin: 30px 50px 30px;
+            margin: 30px 50px;
             padding: 80px;
             border: 1px solid #e1e1e1;
         }
 
         #form-details form {
-            width: 65%;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
         }
 
         #form-details form input,
         #form-details form textarea {
             width: 100%;
             padding: 12px 15px;
-            outline: none;
             margin-bottom: 20px;
             border: 1px solid #e1e1e1;
+            outline: none;
         }
 
         #form-details form button {
             background-color: #088178;
             color: #fff;
+            border: none;
+            padding: 12px;
+            cursor: pointer;
         }
 
-        #form-details .people div {
-            padding-bottom: 25px;
+        /* BIZTAP LOGO */
+        .logo-text {
             display: flex;
-            align-items: flex-start;
+            flex-direction: column;
+            text-decoration: none;
+            line-height: 1;
         }
 
-        #form-details .people div img {
-            width: 65px;
-            height: 65px;
-            object-fit: cover;
-            margin-right: 15px;
+        .logo-main {
+            font-size: 26px;
+            font-weight: 800;
+            color: #088178;
+            letter-spacing: 1px;
         }
 
-        #form-details .people div p {
-            margin: 0;
-            font-size: 13px;
-            line-height: 25px;
+        .logo-sub {
+            font-size: 12px;
+            color: #555;
         }
 
-        #form-details .people div p span {
-            display: block;
-            font-size: 16px;
-            font-weight: 600;
-            color: #000;
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 799px) {
+            #contact-details {
+                flex-direction: column;
+            }
+            #contact-details .map {
+                width: 100%;
+                margin-top: 30px;
+            }
             #form-details {
                 padding: 40px;
-            }
-
-            #form-details form {
-                width: 50%;
             }
         }
 
         @media (max-width: 477px) {
-            #contact-details {
-                flex-direction: column;
-                padding: 40px 20px;
-            }
-
-            #contact-details .details {
-                width: 100%;
-                margin-bottom: 30px;
-            }
-
-            #contact-details .map {
-                width: 100%;
-            }
-
             #form-details {
+                padding: 20px;
                 margin: 10px;
-                padding: 30px 10px;
-                flex-wrap: wrap;
-            }
-
-            #form-details form {
-                width: 100%;
-                margin-bottom: 30px;
             }
         }
     </style>
 </head>
- <section id="header">
-        <a href="#"><img src="images/logo.png" alt=""></a>
-        <div>
-            <ul id="navbar">
-                <li><i class="fas fa-home"></i><a class="active" href="index.html">Home</a></li>
-                <li><i class="fas fa-shopping-cart"></i><a href="shop.html">Shop</a></li>
-                <li><i class="fas fa-blog"></i><a href="blog.html">Blog</a></li>
-                <li><i class="fas fa-user"></i><a href="about.html">About</a></li>
-                <li><i class="fas fa-phone"></i><a href="contact.html">Contact</a></li>
-                <li><i class="fas fa-cart-plus"></i><a href="cart.html">Cart</a></li>
 
-                
-            
-            </ul>
+<body>
 
+<!-- Header -->
+<section id="header">
+    <a href="index.html" class="logo-text">
+        <span class="logo-main">BIZTAP</span>
+        <span class="logo-sub">Shopping Mart</span>
+    </a>
+
+    <div>
+        <ul id="navbar">
+            <li><i class="fas fa-home"></i><a href="index.html">Home</a></li>
+            <li><i class="fas fa-shopping-cart"></i><a href="shop.html">Shop</a></li>
+            <li><i class="fas fa-blog"></i><a href="blog.html">Blog</a></li>
+            <li><i class="fas fa-user"></i><a href="about.html">About</a></li>
+            <li><i class="fas fa-phone"></i><a class="active" href="contact.html">Contact</a></li>
+            <li><i class="fas fa-cart-plus"></i><a href="cart.html">Cart</a></li>
+        </ul>
+    </div>
+</section>
+
+<!-- Hero -->
+<section id="page-header" class="contact-header">
+    <h2>#LetsTalk</h2>
+    <p>Have questions? Reach out to BIZTAP Shopping Mart</p>
+</section>
+
+<!-- Contact + Developer -->
+<section id="contact-details" class="section-p1">
+
+    <div class="developer-section" style="text-align:center; padding:40px; background:#f9f9f9; border-radius:8px;">
+        <h3>About the Developer</h3>
+        <img src="images/unnamed.png" alt="Saumik" style="width:120px;border-radius:50%;margin:20px 0;">
+        <h4 style="color:#088178;">Saumik Chakraborty</h4>
+        <p>AI & Web Developer</p>
+        <p>
+            <i class="far fa-envelope"></i>
+            <a href="mailto:saumik17rkl@gmail.com" style="color:#088178;">saumik17rkl@gmail.com</a>
+        </p>
+    </div>
+
+    <div class="map">
+        <iframe src="https://www.google.com/maps?q=San+Francisco&output=embed" loading="lazy"></iframe>
+    </div>
+</section>
+
+<!-- Contact Form -->
+<section id="form-details">
+    <form>
+        <span>LEAVE A MESSAGE</span>
+        <h2>We’d love to hear from you</h2>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <input type="text" placeholder="Subject">
+        <textarea rows="6" placeholder="Your Message"></textarea>
+        <button class="normal">Submit</button>
+    </form>
+</section>
+
+<!-- Newsletter -->
+<section id="newsletter" class="section-p1">
+    <div class="newsletter-content">
+        <div class="newsletter-text">
+            <h2>Sign Up For Updates</h2>
+            <p>Get product updates and offers from <span>BIZTAP</span></p>
         </div>
-    </section>
-
-    <!-- Hero Section -->
-    <section id="page-header" class="contact-header">
-        <h2>#let's_talk</h2>
-        <p>LEAVE A MESSAGE. We love to hear from you!</p>
-    </section>
-
-    <!-- Contact Details Section -->
-    <section id="contact-details" class="section-p1">
-        
-
-        <!-- About the Developer Section -->
-        <div class="developer-section" style="margin-top: 40px; text-align: center; padding: 40px 20px; background: #f9f9f9; border-radius: 8px;">
-            <h3 style="color: #1a1a1a; margin-bottom: 20px;">About the Developer</h3>
-            <div style="max-width: 200px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 4px solid #088178;">
-                <img src="images/saumik.jpg" alt="Saumik - Web Developer" style="width: 100%; display: block;">
-            </div>
-            <h4 style="color: #088178; margin-bottom: 10px;">Saumik</h4>
-            <p style="color: #666; margin-bottom: 5px;">AI and Web Developer</p>
-            <p style="color: #088178; font-weight: 500;">
-                <i class="far fa-envelope" style="margin-right: 5px;"></i>
-                <a href="mailto:saumik17rkl@gmail.com" style="color: #088178; text-decoration: none;">saumik17rkl@gmail.com</a>
-            </p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button class="normal">Sign Up</button>
         </div>
+    </div>
+</section>
 
-        <div class="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799198932!2d-74.25987701513004!3d40.69767006272707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1644242077510!5m2!1sen!2s" 
-            allowfullscreen="" loading="lazy"></iframe>
+<!-- Footer -->
+<footer class="section-p1">
+    <div class="col">
+        <div class="logo-text">
+            <span class="logo-main">BIZTAP</span>
+            <span class="logo-sub">Shopping Mart</span>
         </div>
-    </section>
+        <p><strong>Address:</strong> 562 Wellington Road, San Francisco</p>
+        <p><strong>Phone:</strong> +01 2222 365</p>
+        <p><strong>Hours:</strong> Mon–Sat, 10:00–18:00</p>
+    </div>
 
-    <!-- Contact Form Section -->
-    <section id="form-details">
-        <form action="">
-            <span>LEAVE A MESSAGE</span>
-            <h2>We love to hear from you</h2>
-            <input type="text" placeholder="Your Name">
-            <input type="text" placeholder="E-mail">
-            <input type="text" placeholder="Subject">
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
-            <button class="normal">Submit</button>
-        </form>
+    <div class="copyright">
+        <p>© 2025, BIZTAP Shopping Mart</p>
+    </div>
+</footer>
 
-       
-    </section>
-
-    <!-- Newsletter Section -->
-    <section id="newsletter" class="section-p1">
-        <div class="newsletter-content">
-            <div class="newsletter-text">
-                <h2>Sign Up For Newsletters</h2>
-                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
-            </div>
-            <div class="newsletter-form">
-                <input type="email" placeholder="Your email address">
-                <button class="normal">Sign Up</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="section-p1">
-        <div class="col">
-            <img class="logo" src="images/logo.png" alt="Cara Logo">
-            <h4>Contact</h4>
-            <p><strong>Address: </strong> 562 Wellington Road, Street 32, San Francisco</p>
-            <p><strong>Phone: </strong> +01 2222 365 /(+91) 01 2345 6789</p>
-            <p><strong>Hours: </strong> 10:00 - 18:00, Mon - Sat</p>
-            <div class="follow">
-                <h4>Follow us</h4>
-                <div class="icon">
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-twitter"></i>
-                    <i class="fab fa-instagram"></i>
-                    <i class="fab fa-pinterest-p"></i>
-                    <i class="fab fa-youtube"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <h4>About</h4>
-            <a href="about.html">About Us</a>
-            <a href="#">Delivery Information</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms & Conditions</a>
-            <a href="contact.html">Contact Us</a>
-        </div>
-        <div class="col">
-            <h4>My Account</h4>
-            <a href="#">Sign In</a>
-            <a href="cart.html">View Cart</a>
-            <a href="#">My Wishlist</a>
-            <a href="#">Track My Order</a>
-            <a href="#">Help</a>
-        </div>
-        <div class="col install">
-            <h4>Install App</h4>
-            <p>From App Store or Google Play</p>
-            <div class="row">
-                <img src="images/pay/app.jpg" alt="App Store">
-                <img src="images/pay/play.jpg" alt="Google Play">
-            </div>
-            <p>Secured Payment Gateways</p>
-            <div class="payment-methods">
-                <img src="images/pay/pay.png" alt="Payment Methods">
-            </div>
-        </div>
-        <div class="copyright">
-            <p>© 2025, Tech2 etc - HTML CSS Ecommerce Template</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
