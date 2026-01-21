@@ -168,15 +168,114 @@ button:disabled {
 
 <script>
 const products = [
-    { id:"FUR001", name:"Wooden Chair", price:199.99, stock:true,
-      image:"https://images.unsplash.com/photo-1592078615290-033ee584e267" },
-
-    { id:"FUR002", name:"Office Chair", price:249.99, stock:true,
-      image:"https://images.unsplash.com/photo-1580480055273-228ff5388ef8" },
-
-    { id:"FUR003", name:"Recliner Chair", price:349.99, stock:false,
-      image:"https://images.unsplash.com/photo-1594026112284-02bb6f3352fe" }
+    {
+        id: "FUR001",
+        name: "Wooden Chair",
+        price: 1999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1592078615290-033ee584e267"
+    },
+    {
+        id: "FUR002",
+        name: "Office Chair",
+        price: 3499,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8"
+    },
+    {
+        id: "FUR003",
+        name: "Recliner Chair",
+        price: 8999,
+        stock: false,
+        image: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe"
+    },
+    {
+        id: "FUR004",
+        name: "Dining Table",
+        price: 14999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
+    },
+    {
+        id: "FUR005",
+        name: "Coffee Table",
+        price: 4999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc"
+    },
+    {
+        id: "FUR006",
+        name: "Side Table",
+        price: 2999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1615874959474-d609969a20ed"
+    },
+    {
+        id: "FUR007",
+        name: "Study Desk",
+        price: 6999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7"
+    },
+    {
+        id: "FUR008",
+        name: "Office Desk",
+        price: 9999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1598300053651-4c9f9c3c38c7"
+    },
+    {
+        id: "FUR009",
+        name: "Bookshelf",
+        price: 5999,
+        stock: false,
+        image: "https://images.unsplash.com/photo-1586023492125-5f4c1f48f9d1"
+    },
+    {
+        id: "FUR010",
+        name: "Wardrobe",
+        price: 18999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0"
+    },
+    {
+        id: "FUR011",
+        name: "Sofa 2-Seater",
+        price: 15999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1555041469-5b1f1d5a5fbb"
+    },
+    {
+        id: "FUR012",
+        name: "Sofa 3-Seater",
+        price: 22999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1586023492125-6f6f7a3b9d5c"
+    },
+    {
+        id: "FUR013",
+        name: "L-Shaped Sofa",
+        price: 34999,
+        stock: false,
+        image: "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c"
+    },
+    {
+        id: "FUR014",
+        name: "TV Unit",
+        price: 8999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1600585154154-712e4a1bdf46"
+    },
+    {
+        id: "FUR015",
+        name: "Bed Queen Size",
+        price: 25999,
+        stock: true,
+        image: "https://images.unsplash.com/photo-1582582429416-9a9f9d64c9c6"
+    }
 ];
+
+// existing addToCart + render logic stays unchanged
 
 // ✅ SINGLE SOURCE OF TRUTH
 function addToCart(product) {
